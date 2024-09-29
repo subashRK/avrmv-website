@@ -33,7 +33,7 @@ function scrollEvent(e) {
 
   cardsContainer.scrollBy({
     behavior: "smooth",
-    left: dir === "right" ? 1 : -1,
+    left: dir === "right" ? 10 : -10,
   })
 }
 
