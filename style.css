@@ -427,9 +427,9 @@ main .text p {
 }
 
 #about-us section .text img {
-  object-fit: cover;
-  max-width: 50%;
-  height: 350px;
+  object-fit: contain;
+  width: 50%;
+  max-height: 350px;
 }
 
 #contact .creator {
@@ -524,8 +524,7 @@ main .text p {
   }
 
   #about-us section .text img {
-    object-fit: contain;
-    max-width: 100%;
+    width: 100%;
   }
 }
 
