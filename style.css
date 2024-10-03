@@ -432,6 +432,12 @@ main .text p {
   max-height: 350px;
 }
 
+@supports (-moz-appearance: none) {
+  #about-us section .text img {
+    min-width: 50%;
+  }
+}
+
 #contact .creator {
   margin-top: 25px;
   text-align: center;
