@@ -3,6 +3,8 @@ const linksContainerToggler = document.querySelector(".navbar .toggle")
 const linksContainer = document.querySelector(".links")
 const cardsContainer = document.querySelector("#events .container")
 const moverEls = document.querySelectorAll(".mover")
+const subContainerToggler = document.querySelector("#contact .toggle")
+const subContainer = document.querySelector("#contact .sub-container")
 
 const observer = new IntersectionObserver(showHiddenEls)
 hiddenEls.forEach(el => observer.observe(el))
@@ -40,3 +42,8 @@ function scrollEvent(e) {
 linksContainerToggler.onclick = toggleLinksContainer
 
 moverEls.forEach(mover => (mover.onclick = scrollEvent))
+
+subContainerToggler.onclick = () => {
+  subContainerToggler.classList.toggle("rotate")
+  subContainer.classList.toggle("show")
+}
