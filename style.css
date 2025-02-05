@@ -572,6 +572,10 @@ main .text p {
   #about-us section .text img {
     width: 100%;
   }
+
+  #contact .creator-container .sub-container {
+    padding: 0px 20px;
+  }
 }
 
 @media only screen and (min-width: 900px) {
