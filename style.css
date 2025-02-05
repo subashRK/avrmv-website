@@ -447,6 +447,7 @@ main .text p {
 #contact .creator-container {
   position: relative;
   width: 100vw;
+  min-height: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
