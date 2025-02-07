@@ -1,6 +1,6 @@
 const hiddenEls = document.querySelectorAll(".hidden")
 const linksContainerToggler = document.querySelector(".navbar .toggle")
-const linksContainer = document.querySelector(".links")
+const linksContainer = document.querySelector(".navbar .links")
 const cardsContainer = document.querySelector("#events .container")
 const moverEls = document.querySelectorAll(".mover")
 const subContainerToggler = document.querySelector("#contact .toggle")
@@ -35,11 +35,15 @@ function scrollEvent(e) {
 
   cardsContainer.scrollBy({
     behavior: "smooth",
-    left: dir === "right" ? 10 : -10,
+    left: dir === "right" ? 20 : -20,
   })
 }
 
 linksContainerToggler.onclick = toggleLinksContainer
+linksContainer.onclick = e => {
+  if (e.target.localName !== "a") return
+  toggleLinksContainer()
+}
 
 moverEls.forEach(mover => (mover.onclick = scrollEvent))
 
