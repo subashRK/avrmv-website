@@ -459,6 +459,7 @@ main .text p {
 }
 
 #contact .sub-container.show {
+  padding: 20px 0px;
   max-height: 1000px;
 }
 
@@ -563,6 +564,10 @@ main .text p {
 
   #about-us section .text img {
     width: 100%;
+  }
+
+  #contact .sub-container {
+    text-align: center;
   }
 }
 
