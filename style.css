@@ -101,7 +101,7 @@ h2 {
   height: 3px;
   background-color: white;
   border-radius: 3px;
-  transition: transform 0.75s;
+  transition: all 0.75s;
 }
 
 .navbar .title {
