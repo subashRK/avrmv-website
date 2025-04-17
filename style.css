@@ -85,7 +85,6 @@ h2 {
   position: absolute;
   top: 0%;
   left: 0%;
-  transition: transform 0.75s;
 }
 .navbar .toggle.close .hor:first-child {
   transform: rotateZ(45deg);
@@ -102,6 +101,7 @@ h2 {
   height: 3px;
   background-color: white;
   border-radius: 3px;
+  transition: transform 0.75s;
 }
 
 .navbar .title {
