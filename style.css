@@ -90,7 +90,7 @@ h2 {
   transform: rotateZ(45deg);
 }
 .navbar .toggle.close .hor:nth-child(2) {
-  mx-height: 0;
+  mx-height: 0px;
 }
 .navbar .toggle.close .hor:last-child {
   transform: rotateZ(-45deg);
