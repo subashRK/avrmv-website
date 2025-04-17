@@ -27,7 +27,9 @@ function showHiddenEls(els) {
 
 function toggleLinksContainer() {
   linksContainer.classList.toggle("open")
-  linksContainerToggler.classList.toggle("close")
+  linksContainerToggler.classList.contains("close")
+    ? linksContainerToggler.classList.remove("close")
+    : linksContainerToggler.classList.add("close")
 }
 
 function scrollEvent(e) {

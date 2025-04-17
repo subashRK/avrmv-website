@@ -63,6 +63,7 @@ h2 {
   align-items: center;
   justify-content: space-around;
   padding: 20px 30px;
+  height: 90px;
   z-index: 999;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
@@ -74,26 +75,33 @@ h2 {
   width: 50px;
   gap: 7px;
   cursor: pointer;
+  position: relative;
+  transition: gap 0.25s ease-in-out 0.3s;
+}
+
+.navbar .toggle:not(.close) .hor:nth-child(2) {
+  transition-delay: 0.25s;
 }
 
 .navbar .toggle.close {
   display: block;
   gap: 0px;
-  position: relative;
-}
-.navbar .toggle.close .hor {
-  position: absolute;
-  top: 0%;
-  left: 0%;
 }
 .navbar .toggle.close .hor:first-child {
-  transform: rotateZ(45deg);
+  transform: rotateZ(-45deg);
+  translate: 0% 100%;
 }
 .navbar .toggle.close .hor:nth-child(2) {
-  max-height: 0px;
+  visibility: hidden;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 .navbar .toggle.close .hor:last-child {
-  transform: rotateZ(-45deg);
+  transform: rotateZ(45deg);
+  translate: 0% -100%;
+}
+.navbar .toggle.close .hor {
+  transition: transform 0.5s 0.15s, translate 0.15s, transform-origin 0.5s;
 }
 
 .navbar .toggle .hor {
@@ -101,7 +109,7 @@ h2 {
   height: 3px;
   background-color: white;
   border-radius: 3px;
-  transition: all 0.75s;
+  transition: transform 0.5s, translate 0.15s 0.5s, transform-origin 0.5s;
 }
 
 .navbar .title {
