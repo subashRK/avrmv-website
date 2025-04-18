@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --bg-color: rgb(35, 35, 35);
+  --bg-color: rgb(25, 25, 25);
   --spacing: 20px 35px;
   overflow-x: hidden;
 }
@@ -53,7 +53,7 @@ h2 {
 }
 
 .navbar {
-  background-color: rgba(35, 35, 35, 0.8);
+  background-color: rgba(35, 35, 35, 0.5);
   backdrop-filter: blur(5px);
   position: sticky;
   top: 0%;
@@ -65,15 +65,14 @@ h2 {
   padding: 20px 30px;
   height: 90px;
   z-index: 999;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .toggle {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 50px;
-  gap: 7px;
+  width: 40px;
+  gap: 6px;
   cursor: pointer;
   position: relative;
   transition: gap 0.25s ease-in-out 0.3s;
@@ -106,9 +105,8 @@ h2 {
 
 .navbar .toggle .hor {
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: white;
-  border-radius: 3px;
   transition: transform 0.5s, translate 0.15s 0.5s, transform-origin 0.5s;
 }
 
@@ -283,19 +281,20 @@ main .text p {
   width: 100vw;
 }
 
-#events .mover,
 #events .mover {
   --size: 50px;
   font-size: 2.5rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
-  border-radius: 5px;
+  border-radius: 25px;
   position: absolute;
   width: var(--size);
   height: var(--size);
-  background-color: rgba(37, 37, 37, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
   cursor: pointer;
-  margin: 0px 25px;
+  margin: 0px 50px;
   transition: all 0.25s;
   display: flex;
   align-items: center;
@@ -333,17 +332,22 @@ main .text p {
 #events .container .card {
   min-width: 300px;
   max-width: 300px;
-  background-color: rgb(56, 56, 56);
-  border-radius: 5px;
+  background-color: rgb(40, 40, 40);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
   scroll-snap-align: start;
 }
+/*   background-image: linear-gradient(to bottom right, #ffe134, #fe5a1c);
+ */
 
 #events .container .card img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   object-position: top;
+  border-radius: inherit;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 #events .card .content {
@@ -524,6 +528,10 @@ main .text p {
   :root {
     --spacing: 15px;
   }
+
+  #events .mover {
+    margin: 0px 25px;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -554,10 +562,6 @@ main .text p {
 
   .navbar .title {
     font-size: calc(20px + 1.5vw);
-  }
-
-  .navbar .toggle {
-    width: 45px;
   }
 
   #about-us section:nth-child(even) .text {
