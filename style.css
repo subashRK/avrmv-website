@@ -3,6 +3,14 @@
 :root {
   --bg-color: rgb(25, 25, 25);
   --spacing: 20px 35px;
+  --secondary-color: rgb(255, 223, 43);
+  --secondary-gradient: linear-gradient(
+    to right,
+    transparent,
+    #c2fe0b,
+    #e5ff45
+  );
+  --avrmv-gradient: linear-gradient(to right, #eecda3 -10%, #ef629f);
   overflow-x: hidden;
 }
 
@@ -34,10 +42,10 @@ img {
 h1 {
   font-weight: bold;
   font-size: 3.5rem;
-  background: -webkit-linear-gradient(16deg, #eecda3, #ef629f);
+  background: var(--avrmv-gradient);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   text-align: center;
   margin-bottom: 25px;
 }
@@ -111,6 +119,7 @@ h2 {
 }
 
 .navbar .title {
+  color: whitesmoke;
   font-size: 2rem;
 }
 
@@ -128,7 +137,8 @@ h2 {
   left: 0%;
   width: 100%;
   height: 2px;
-  background-color: whitesmoke;
+  /* if you wish to reset to original color should be whitesmoke */
+  background-color: var(--secondary-color);
   transform: scaleX(0%);
   transition: all 0.25s;
   transform-origin: left;
@@ -140,7 +150,7 @@ h2 {
 }
 
 .navbar .nav-link:hover {
-  filter: brightness(0.85);
+  color: var(--secondary-color);
 }
 
 .navbar .links {
@@ -192,6 +202,7 @@ main .text p {
   font-size: 1.2rem;
 }
 
+/* General CSS -> Applied genrally rather than to a specific section */
 .hidden {
   opacity: 0;
   transition: transform 1s ease-out, opacity 1s;
@@ -212,6 +223,23 @@ main .text p {
   transition: none;
 }
 
+.gradient-container {
+  display: flex;
+  width: 100%;
+  height: 0.5px;
+}
+.gradient-1,
+.gradient-2 {
+  width: 50%;
+  height: 100%;
+}
+.gradient-1 {
+  background-image: linear-gradient(to right, transparent, #c2fe0b, #e5ff45);
+}
+.gradient-2 {
+  background-image: linear-gradient(to right, #e5ff45, #c2fe0b, transparent);
+}
+
 .show {
   opacity: 1;
   transform: translateX(0%);
@@ -225,6 +253,7 @@ main .text p {
 .scroll-bar-hidden::-webkit-scrollbar {
   display: none;
 }
+/* End of general */
 
 #gallery {
   padding: 0;
@@ -336,9 +365,23 @@ main .text p {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   scroll-snap-align: start;
+  transition: filter 0.15s;
+  cursor: pointer;
 }
-/*   background-image: linear-gradient(to bottom right, #ffe134, #fe5a1c);
- */
+
+#events .container .card:hover {
+  filter: brightness(1.2);
+}
+
+#events .container .card .gradient-container {
+  opacity: 0;
+  transition: opacity 0.25s;
+  transform-origin: center;
+}
+
+#events .container .card:hover .gradient-container {
+  opacity: 1;
+}
 
 #events .container .card img {
   width: 100%;
@@ -366,6 +409,7 @@ main .text p {
 }
 
 #about-us section {
+  --color: #ffc933;
   padding: 0;
   width: 100%;
   display: block;
@@ -374,11 +418,10 @@ main .text p {
 }
 
 #about-us section .title {
-  --sec-color: #ffc933;
   display: flex;
   flex-direction: column;
   margin: 30px 0px;
-  border-bottom: 2px dotted var(--sec-color);
+  border-bottom: 2px dotted var(--color);
   padding: 10px 0px;
 }
 
@@ -401,7 +444,7 @@ main .text p {
 
 #about-us section:nth-child(even) .title h3::before {
   content: "";
-  background: var(--sec-color);
+  background: var(--color);
   position: absolute;
   left: calc(-1 * var(--margin));
   top: 50%;
@@ -413,7 +456,7 @@ main .text p {
 
 #about-us section:nth-child(odd) .title h3::after {
   content: "";
-  background: #ffc933;
+  background: var(--color);
   position: absolute;
   right: calc(-1 * var(--margin));
   top: 50%;
