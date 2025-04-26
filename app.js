@@ -5,6 +5,7 @@ const cardsContainer = document.querySelector("#events .container")
 const moverEls = document.querySelectorAll(".mover")
 const subContainerToggler = document.querySelector("#contact .toggle")
 const subContainer = document.querySelector("#contact .sub-container")
+const galleryContainer = document.querySelector("#gallery .container")
 
 const observer = new IntersectionObserver(showHiddenEls)
 hiddenEls.forEach(el => observer.observe(el))
@@ -52,4 +53,16 @@ moverEls.forEach(mover => (mover.onclick = scrollEvent))
 subContainerToggler.onclick = () => {
   subContainerToggler.classList.toggle("rotate")
   subContainer.classList.toggle("show")
+}
+
+// Gallery logic
+document.addEventListener("readystatechange", () =>
+  document.readyState === "complete" ? moveToCenter() : null
+)
+
+function moveToCenter() {
+  galleryContainer.scroll({
+    behavior: "smooth",
+    left: document.querySelector("#gallery .container img.center").offsetWidth,
+  })
 }
