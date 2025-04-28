@@ -34,11 +34,15 @@ function toggleLinksContainer() {
 }
 
 function scrollEvent(e) {
-  dir = e.target.dataset.dir
+  const toRight = e.target.dataset.dir == "right"
+  const isGallery = e.target.parentElement.id == "gallery"
+  const container = isGallery ? galleryContainer : cardsContainer
 
-  cardsContainer.scrollBy({
+  if (isGallery) handleGalleryChange(toRight)
+
+  container.scrollBy({
     behavior: "smooth",
-    left: dir === "right" ? 20 : -20,
+    left: toRight ? 20 : -20,
   })
 }
 
@@ -61,8 +65,33 @@ document.addEventListener("readystatechange", () =>
 )
 
 function moveToCenter() {
-  galleryContainer.scroll({
+  const centerEl = document.querySelector("#gallery .container img.center")
+  const index = Array.from(galleryContainer.children).indexOf(centerEl)
+
+  console.log(index * centerEl.offsetWidth)
+
+  galleryContainer.scrollTo({
     behavior: "smooth",
-    left: document.querySelector("#gallery .container img.center").offsetWidth,
+    left: centerEl.offsetWidth * index,
   })
+}
+
+function handleGalleryChange(toRight) {
+  const currentCenterEl = document.querySelector(
+    "#gallery .container img.center"
+  )
+  const nextEl = toRight
+    ? currentCenterEl.nextElementSibling
+    : currentCenterEl.previousElementSibling
+  const { firstElementChild, lastElementChild } = galleryContainer
+
+  // Make sure to use first/lastElementChild instead of first/lastChild, the latter returns event text and comments if they are the first child
+  if (toRight && nextEl === lastElementChild) {
+    galleryContainer.appendChild(firstElementChild)
+  } else if (!toRight && nextEl == firstElementChild) {
+    galleryContainer.prepend(lastElementChild)
+  }
+
+  currentCenterEl.classList.toggle("center", false)
+  nextEl.classList.toggle("center", true)
 }

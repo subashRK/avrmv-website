@@ -244,6 +244,44 @@ section {
 .scroll-bar-hidden::-webkit-scrollbar {
   display: none;
 }
+
+.mover {
+  --size: 50px;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  margin: 0px 50px;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 901;
+  user-select: none;
+  top: 50%;
+}
+
+.mover[data-dir="right"] {
+  right: 0%;
+}
+
+.mover[data-dir="left"] {
+  left: 0%;
+}
+
+.mover:hover,
+.mover:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 1);
+}
+
 /* End of general */
 
 /* Start of Main */
@@ -271,7 +309,8 @@ main .text p {
 
 #gallery {
   padding: 0px;
-  max-width: 800px;
+  max-width: 900px;
+  position: relative;
 }
 
 #gallery .container {
@@ -285,6 +324,7 @@ main .text p {
   /* Added height so that scaling to image works fine */
   height: 500px;
   background-color: transparent;
+  gap: 10px;
 }
 
 #gallery .container img {
@@ -292,24 +332,27 @@ main .text p {
   scroll-snap-align: center;
   scroll-snap-stop: always;
   border-radius: 3px;
-  width: 80%;
   filter: brightness(0.6);
   height: 350px;
-  max-height: 350px;
-  position: relative;
   pointer-events: unset;
   cursor: pointer;
+  width: 80%;
+  flex-shrink: 0;
+  z-index: 1;
   transition: filter 0.15s, scale 0.15s;
 }
 
 #gallery .container img.center {
-  max-height: 350px;
-  height: 350px;
   scale: 1.05;
   filter: brightness(1);
-  z-index: 998;
+  z-index: 900;
   box-shadow: 12px 12px 10px 1px rgba(0, 0, 0, 0.3);
   transition-delay: 0.5s;
+}
+
+#gallery .mover {
+  margin: 0px 25px;
+  transform: translateY(-50%);
 }
 
 /* 
@@ -368,43 +411,6 @@ main .text p {
   width: 100vw;
 }
 
-#events .mover {
-  --size: 50px;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
-  border-radius: 25px;
-  position: absolute;
-  width: var(--size);
-  height: var(--size);
-  background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-  cursor: pointer;
-  margin: 0px 50px;
-  transition: all 0.25s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  user-select: none;
-  top: 50%;
-}
-
-#events .mover[data-dir="right"] {
-  right: 0%;
-}
-
-#events .mover[data-dir="left"] {
-  left: 0%;
-}
-
-#events .mover:hover,
-#events .mover:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 1);
-}
-
 #events .container {
   width: 100%;
   display: flex;
@@ -414,6 +420,7 @@ main .text p {
   overflow-x: scroll;
   gap: 25px;
   scroll-snap-type: x mandatory;
+  position: relative;
 }
 
 #events .container .card {
@@ -423,6 +430,7 @@ main .text p {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   transition: filter 0.15s;
   cursor: pointer;
 }
@@ -633,7 +641,7 @@ main .text p {
 }
 
 /* Media queries */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   :root {
     --spacing: 18px;
   }
@@ -646,12 +654,16 @@ main .text p {
     font-weight: 400;
   }
 
-  #events .mover {
+  .mover {
     margin: 0px 25px;
   }
 
   #contact .sub-container p:first-child {
     margin-bottom: 15px;
+  }
+
+  #events .container .card {
+    scroll-snap-align: center;
   }
 }
 
