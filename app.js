@@ -34,21 +34,28 @@ function toggleLinksContainer() {
 }
 
 function scrollEvent(e) {
-  const toRight = e.target.dataset.dir == "right"
-  const isGallery = e.target.parentElement.id == "gallery"
+  const toRight = e.target.dataset.dir === "right"
+  const isGallery = e.target.parentElement.id === "gallery"
   const container = isGallery ? galleryContainer : cardsContainer
+  const scrollByValue = container.firstElementChild.offsetWidth
 
   if (isGallery) handleGalleryChange(toRight)
 
   container.scrollBy({
     behavior: "smooth",
-    left: toRight ? 20 : -20,
+    left: toRight ? scrollByValue : -scrollByValue,
   })
 }
 
 linksContainerToggler.onclick = toggleLinksContainer
 linksContainer.onclick = e => {
   if (e.target.localName !== "a") return
+
+  // const href = e.target.getAttribute("href")
+  // if (href.trim() == "") return
+  // console.log(document.querySelector(href))
+  // document.querySelector(href).scrollIntoView({ behavior: "smooth" })
+
   toggleLinksContainer()
 }
 
@@ -67,8 +74,6 @@ document.addEventListener("readystatechange", () =>
 function moveToCenter() {
   const centerEl = document.querySelector("#gallery .container img.center")
   const index = Array.from(galleryContainer.children).indexOf(centerEl)
-
-  console.log(index * centerEl.offsetWidth)
 
   galleryContainer.scrollTo({
     behavior: "smooth",

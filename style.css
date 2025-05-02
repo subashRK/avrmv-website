@@ -5,8 +5,6 @@
   --sec-bg: rgb(25, 25, 25);
   --spacing: 20px 35px;
   --sec-color: #bfff00;
-  /* --avrmv-gradient: linear-gradient(to right, #eecda3 -10%, #ef629f); -> Old gradient */
-  /* --avrmv-gradient: linear-gradient(135deg, #fffc5d, #88ff00); */
   --avrmv-gradient: linear-gradient(135deg, #fff131, #a0ff24);
   overflow-x: hidden;
 }
@@ -21,8 +19,8 @@
 }
 
 ::selection {
-  color: rgb(45, 45, 45);
-  background-color: #c3ff53;
+  color: rgb(36, 36, 36);
+  background-color: #beff46;
 }
 
 body {
@@ -61,10 +59,14 @@ h2 {
   letter-spacing: -2px;
   word-spacing: 5px;
   margin-bottom: 25px;
+  background: var(--avrmv-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .navbar {
-  background-color: rgba(25, 25, 25, 0.7);
+  background-color: rgba(15, 15, 15, 0.7);
   backdrop-filter: blur(5px);
   position: sticky;
   top: 0%;
@@ -87,20 +89,27 @@ h2 {
 .navbar .toggle {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 40px;
+  justify-content: center;
+  align-items: center;
   gap: 6px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
-  position: relative;
-  transition: gap 0.25s ease-in-out 0.3s;
+  border: 1px solid lightgray;
+  border-radius: 50%;
 }
 
 .navbar .toggle:not(.close) .hor:nth-child(2) {
-  transition-delay: 0.25s;
+  transition-delay: 0.15s;
 }
 
+.navbar .toggle:not(.close) {
+  transition: gap 0.25s ease-in-out;
+  transition-delay: 0.3s;
+}
 .navbar .toggle.close {
-  display: block;
+  transition: gap 0.25s ease-in-out;
+  transition-delay: unset;
   gap: 0px;
 }
 .navbar .toggle.close .hor:first-child {
@@ -119,12 +128,14 @@ h2 {
 .navbar .toggle.close .hor {
   transition: transform 0.5s 0.15s, translate 0.15s, transform-origin 0.5s;
 }
+.navbar .toggle:not(.close) .hor {
+  transition: transform 0.5s 0s, translate 0.15s 0.15s, transform-origin 0.5s;
+}
 
 .navbar .toggle .hor {
-  width: 100%;
-  height: 2px;
+  width: 50%;
+  height: 1px;
   background-color: whitesmoke;
-  transition: transform 0.5s, translate 0.15s 0.5s, transform-origin 0.5s;
 }
 
 .navbar .title {
@@ -168,7 +179,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: var(--sec-bg);
+  background-color: var(--bg-color);
   align-items: center;
   position: absolute;
   right: 100%;
@@ -311,6 +322,8 @@ main .text p {
   padding: 0px;
   max-width: 900px;
   position: relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 #gallery .container {
@@ -355,60 +368,10 @@ main .text p {
   transform: translateY(-50%);
 }
 
-/* 
-#gallery {
-  padding: 0;
-  margin: var(--spacing);
-  position: relative;
-}
-
-#gallery .carousel {
-  width: 100%;
-  border-radius: 10px;
-  height: 400px;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  border: 10px rgb(56, 56, 56) solid;
-  border-width: 10px 25px 10px 25px;
-}
-
-#gallery .notch {
-  --color: rgb(36, 36, 36);
-  position: absolute;
-  left: 12.5px;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-#gallery .carousel .camera {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--color);
-}
-
-#gallery .carousel .speaker {
-  height: 120px;
-  width: 5px;
-  background-color: rgb(36, 36, 36);
-  border-radius: 5px;
-}
-
-#gallery .carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  scroll-snap-align: start;
-} */
-
 #events {
   position: relative;
   width: 100vw;
+  margin-bottom: 40px;
 }
 
 #events .container {
@@ -475,6 +438,10 @@ main .text p {
   color: #cfd0ce;
 }
 
+#about-us .title h2 {
+  margin-bottom: 0px;
+}
+
 #about-us section {
   --color: var(--sec-color);
   width: 100%;
@@ -510,7 +477,7 @@ main .text p {
 
 #about-us section:nth-child(even) .title h3::before {
   content: "";
-  background: var(--color);
+  background: var(--avrmv-gradient);
   position: absolute;
   left: calc(-1 * var(--margin));
   top: 50%;
@@ -522,7 +489,7 @@ main .text p {
 
 #about-us section:nth-child(odd) .title h3::after {
   content: "";
-  background: var(--color);
+  background: var(--avrmv-gradient);
   position: absolute;
   right: calc(-1 * var(--margin));
   top: 50%;
@@ -593,7 +560,13 @@ main .text p {
 }
 
 #contact .creator .creator-link {
-  color: var(--sec-color);
+  background: var(--avrmv-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--sec-color);
   font-size: 17px;
 }
 
@@ -665,28 +638,16 @@ main .text p {
   #events .container .card {
     scroll-snap-align: center;
   }
+
+  #gallery .container {
+    gap: 5px;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
   h1 {
     font-size: 3rem;
   }
-  /* 
-  #gallery .carousel {
-    border-width: 25px 10px 25px 10px;
-  }
-
-  #gallery .notch {
-    left: 50%;
-    top: 12.5px;
-    flex-direction: row;
-  }
-
-  #gallery .carousel .speaker {
-    width: 15vw;
-    min-width: 75px;
-    height: 5px;
-  } */
 
   .navbar {
     justify-content: space-between;
@@ -715,10 +676,3 @@ main .text p {
     text-align: center;
   }
 }
-/* 
-@media only screen and (min-width: 900px) {
-  #gallery {
-    width: 800px;
-    margin: 20px auto;
-  }
-} */
