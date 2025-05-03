@@ -30,7 +30,6 @@ body {
   font-family: "Poppins", sans-serif;
   color: whitesmoke;
   scroll-behavior: smooth;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 
@@ -84,6 +83,7 @@ h2 {
   position: absolute;
   top: 0%;
   left: 0%;
+  height: 1px;
 }
 
 .navbar .toggle {
@@ -315,6 +315,7 @@ main .text {
 
 main .text p {
   font-size: 1.2rem;
+  max-width: 1000px;
 }
 /* End of Main */
 
@@ -625,6 +626,10 @@ main .text p {
 
   h1 {
     font-weight: 400;
+  }
+
+  .navbar .gradient-container {
+    top: 1px;
   }
 
   .mover {

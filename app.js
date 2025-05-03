@@ -50,12 +50,6 @@ function scrollEvent(e) {
 linksContainerToggler.onclick = toggleLinksContainer
 linksContainer.onclick = e => {
   if (e.target.localName !== "a") return
-
-  // const href = e.target.getAttribute("href")
-  // if (href.trim() == "") return
-  // console.log(document.querySelector(href))
-  // document.querySelector(href).scrollIntoView({ behavior: "smooth" })
-
   toggleLinksContainer()
 }
 
@@ -67,9 +61,7 @@ subContainerToggler.onclick = () => {
 }
 
 // Gallery logic
-document.addEventListener("readystatechange", () =>
-  document.readyState === "complete" ? moveToCenter() : null
-)
+requestAnimationFrame(moveToCenter) // moves the image when the windows is ready to paint, DOMLoadedevent and readystatechange events didn't work.
 
 function moveToCenter() {
   const centerEl = document.querySelector("#gallery .container img.center")
